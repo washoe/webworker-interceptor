@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Request Interception POC</title>
+</head>
+<body>
+  <button onclick="makeXHRRequest()">Make XHR Request</button>
+  <button onclick="makeFetchRequest()">Make Fetch Request</button>
+
+  <script>
+    // Event listener for messages from the web worker
+    navigator.serviceWorker.addEventListener('message', event => {
+      const { data } = event;
+
+      console.log(data); // Log intercepted messages to console
+    });
+
+    // Function to make XHR request
+    function makeXHRRequest() {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', 'example.json'); // Replace with your local server URL
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          console.log(xhr.responseText); // Log XHR response to console
+        }
+      };
+      xhr.send();
+    }
+
+    // Function to make Fetch request
+    function makeFetchRequest() {
+      fetch('example.json') // Replace with your local server URL
+        .then(response => {
+          console.log(response); // Log Fetch response to console
+          return response.text();
+        })
+        .then(data => {
+          console.log(data); // Log Fetch response data to console
+        });
+    }
+  </script>
+
+  <script>
+    // Register the web worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('webworker.js');
+    }
+  </script>
+</body>
+</html>
