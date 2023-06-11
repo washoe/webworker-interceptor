@@ -10,7 +10,7 @@ To run the POC locally, follow these steps:
 
    git clone https://github.com/your-username/request-interception-poc.git
 
-2. Open the index.html file in a web browser.
+2. Use http-server or similar to run
 
 ## Usage
 
@@ -19,7 +19,7 @@ The web page contains two buttons that trigger HTTP requests:
 - Make XHR Request: Sends an XMLHttpRequest to a specified URL.
 - Make Fetch Request: Sends a Fetch request to a specified URL.
 
-The web worker intercepts these requests, adds a custom header ("x-custom"), and logs the intercepted request and response to the console.
+The web worker intercepts these requests, adds a custom header ("x-custom"), and logs the intercepted request and response to the console. There is no output on screen so have your devtools open.
 
 ## Logging
 
