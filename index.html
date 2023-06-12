@@ -12,13 +12,13 @@
     navigator.serviceWorker.addEventListener('message', event => {
       const { data } = event;
 
-      console.log(data); // Log intercepted messages to console
+      console.log('from webworker', data); // Log intercepted messages to console
     });
 
     // Function to make XHR request
     function makeXHRRequest() {
       const xhr = new XMLHttpRequest();
-      xhr.open('GET', 'example.json'); // Replace with your local server URL
+      xhr.open('GET', '/test'); // Replace with your local server URL
       xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           console.log(xhr.responseText); // Log XHR response to console
@@ -29,7 +29,7 @@
 
     // Function to make Fetch request
     function makeFetchRequest() {
-      fetch('example.json') // Replace with your local server URL
+      fetch('/test') // Replace with your local server URL
         .then(response => {
           console.log(response); // Log Fetch response to console
           return response.text();

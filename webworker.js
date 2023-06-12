@@ -1,7 +1,7 @@
 self.addEventListener('fetch', event => {
   const interceptedRequest = event.request;
   const modifiedRequest = new Request(interceptedRequest, {
-    headers: { 'x-custom': 'Custom Header Value' } // Add custom header
+    headers: { 'x-custom': 'Custom Header Value from webworker interceptor' } // Add custom header
   });
 
   console.log('Intercepted Request:', interceptedRequest);
